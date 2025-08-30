@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InvestSmart - Invest Dashboard</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style type="text/tailwindcss">
+    :root { --primary-color: #38e07b; --secondary-color: #2c3e50; --background-color: #1a1a1a; --text-primary: #e0e0e0; --text-secondary: #b0b0b0; --accent-color: #4CAF50; --card-bg: #222222; --border-color: #333333; } body { font-family: 'Spline Sans', sans-serif; background-color: var(--background-color); color: var(--text-primary); } .dark .group\/design-root { --background-color: #1a1a1a; --text-primary: #e0e0e0; --text-secondary: #b0b0b0; --secondary-color: #2c3e50; --card-bg: #222222; --border-color: #333333; } 
+  </style>
+</head>
+
+<body class="dark">
+  <div
+    class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden bg-[var(--background-color)]">
+    <div class="layout-container flex h-full grow flex-col"> <!-- Header -->
+      <header
+        class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between whitespace-nowrap border-b border-solid border-[var(--border-color)] px-4 sm:px-6 lg:px-10 py-3 sm:py-4">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:gap-10">
+          <div class="flex items-center gap-3 text-white"> <svg class="size-7 text-[var(--primary-color)]" fill="none"
+              viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
+                d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"></path>
+            </svg>
+            <h1 class="text-xl sm:text-2xl font-bold tracking-tight">InvestSmart</h1>
+          </div> <!-- Scrollable nav on small screens -->
+          <nav class="flex items-center gap-6 sm:gap-8 overflow-x-auto no-scrollbar pr-2 -mr-2"> <a
+              class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm sm:text-base font-medium transition-colors shrink-0"
+              href="#">Home</a> <a
+              class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm sm:text-base font-medium transition-colors shrink-0"
+              href="#">Portfolio</a> <a class="text-[var(--text-primary)] text-sm sm:text-base font-bold shrink-0"
+              href="#">Invest</a> <a
+              class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm sm:text-base font-medium transition-colors shrink-0"
+              href="#">Learn</a> </nav>
+        </div> <!-- Actions: search + icons -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <div class="relative flex-1 min-w-0">
+            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"> <svg
+                class="size-5 text-[var(--text-secondary)]" fill="currentColor" viewBox="0 0 256 256"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z">
+                </path>
+              </svg> </div> <input
+              class="form-input w-full rounded-full text-sm sm:text-base leading-normal text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border-transparent bg-[var(--card-bg)] placeholder:text-[var(--text-secondary)] pl-10 pr-4 py-2"
+              placeholder="Search stocks, funds..." value="" />
+          </div> <button
+            class="flex items-center justify-center rounded-full size-10 bg-[var(--card-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--secondary-color)] transition-colors">
+            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="size-6">
+              <path
+                d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z">
+              </path>
+            </svg> </button>
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-offset-2 ring-offset-[var(--background-color)] ring-[var(--primary-color)] shrink-0"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9O0oA-NuvvSYfpO6JJ6KW8Y_zH6Q5xNAAK95E8P3i47jwNp9qmLCxZwOQvc4JIR-Fde2xbY-KOZFwuc0oDB78_HFuYOicg7oy_l2oAYTJ2PCynhdcybzYNDNmhbsAVcLWhk0UyO46VQ6cCOzxir0id-n1oSUsPKJPzmYnSUdEMTaqq-G8JaG0PEtDB9QNLozDFNDfWxyjrL7KU4aPSVu782YxoCb-GrxEomfacXQS41Vv5CfzcEOIOpucOvcDGvc4EgeDh-CQd78");'>
+          </div>
+        </div>
+      </header>
+      <main class="flex-1 px-4 sm:px-6 lg:px-10 py-6 sm:py-8">
+        <div class="mx-auto w-full max-w-7xl">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6 sm:mb-8">Invest Dashboard
+          </h2>
+
+          <!-- Top Stock Picks -->
+          <section class="mb-10 sm:mb-12">
+            <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">Top Stock Picks</h3>
+            <div
+              class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+              <!-- Card -->
+              <div
+                class="group flex flex-col gap-3 sm:gap-4 rounded-2xl bg-[var(--card-bg)] p-4 transition-all duration-300 hover:bg-[var(--secondary-color)] hover:scale-[1.02] sm:hover:scale-105">
+                <div class="w-full aspect-square rounded-xl bg-cover bg-center"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGXjiLXJDIb8tohv-K8FysfmeKawbC7jNaoKtqvPsOpDOD9hke8KdEMh5jbe5cTk-SLa3ZBwJj-nbKF9hk7f679wdde-Dz0Dert9dK7XRldANbiNoLs9WTX8bGwCIv74uKIhhiT2A9T0uWDvOvrD_judTZhvUVzsyAqU6bU0AsrVS8UJ-vNzwbqB1xGzrqUlXQMtwwre9ERx2Z3R2o9cs40xDNSYZC0V3-F-aEKtBkaaFG4Eu3lNl61A0jBEGtpwVPXBzDkeOqMgw");'>
+                </div>
+                <div>
+                  <p class="text-base sm:text-lg font-bold text-white">TechCorp</p>
+                  <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Technology</p>
+                </div>
+                <button
+                  class="w-full bg-[var(--primary-color)] text-black font-bold py-2 px-4 rounded-full opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity text-sm sm:text-base">Invest
+                  Now</button>
+              </div>
+
+              <div
+                class="group flex flex-col gap-3 sm:gap-4 rounded-2xl bg-[var(--card-bg)] p-4 transition-all duration-300 hover:bg-[var(--secondary-color)] hover:scale-[1.02] sm:hover:scale-105">
+                <div class="w-full aspect-square rounded-xl bg-cover bg-center"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAivfPjL09CxlXcpzQepgvm2kYkj3dMd8q0C4xDeheY_IxW8u81J6FwPuaj00NvCalaZWYF6fP7yO1B5syfEKFO7TYOPe2Z8SLxyEbDyavpXPqVoFMCZXYUzgPcfE2jde38MfYAKjpAyKQQw7n2vrFroay9wRgOKp2-csMp0XkjOf17MMCVIUSXVrR0TzWxpKea5jSC8xGF7WXcV4IRMEv0zaQUB7nfZjCV1db4bEiPZO1PlDYSiS1wTnsOl-SLhmTDdRGrVkue6jw");'>
+                </div>
+                <div>
+                  <p class="text-base sm:text-lg font-bold text-white">HealthInc</p>
+                  <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Healthcare</p>
+                </div>
+                <button
+                  class="w-full bg-[var(--primary-color)] text-black font-bold py-2 px-4 rounded-full opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity text-sm sm:text-base">Invest
+                  Now</button>
+              </div>
+
+              <div
+                class="group flex flex-col gap-3 sm:gap-4 rounded-2xl bg-[var(--card-bg)] p-4 transition-all duration-300 hover:bg-[var(--secondary-color)] hover:scale-[1.02] sm:hover:scale-105">
+                <div class="w-full aspect-square rounded-xl bg-cover bg-center"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBl-vptnr9UddDn1cxXB3ymkktrw8Y50lAkcTicsEgNQkCqKv57g6XYGNTibsPhNkH1wurVVtppC54_lbvLuOmTUGwu_SSzHAwTHO3BWXTUhk_m_d5mFXGEOLKl7EHgN0bNTEzu1WKvZlRXqpeZXV03gLr2wAn5fcxsT6yyEAtH2oGCAuT5WWqnPSFgeLUXMkLf8PfnECAmNPHyXUfTOXjie9i7t9O8YbHxkl4psI1335KMDCHe4ebgFnKOTfGHiU9CwFNcYjZhMFQ");'>
+                </div>
+                <div>
+                  <p class="text-base sm:text-lg font-bold text-white">FinServ</p>
+                  <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Financial Services</p>
+                </div>
+                <button
+                  class="w-full bg-[var(--primary-color)] text-black font-bold py-2 px-4 rounded-full opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity text-sm sm:text-base">Invest
+                  Now</button>
+              </div>
+
+              <div
+                class="group flex flex-col gap-3 sm:gap-4 rounded-2xl bg-[var(--card-bg)] p-4 transition-all duration-300 hover:bg-[var(--secondary-color)] hover:scale-[1.02] sm:hover:scale-105">
+                <div class="w-full aspect-square rounded-xl bg-cover bg-center"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2ewrTBJcxD2EudbLkfOlsQffGZy-IPDyWqo0eYK_EBGYQfMT-xIdCc3xlDT2buJiQ8WtolfKfO0zOJrL8JPRZPqecP3dLAm4ekTtN47D8WQHdq1eaHVUICL6ZQn-Q5GCPj9OyLG031VmYsV8BR-yp_OolTCvE-XwIpRiRS5yCyuqo45MBxioDJUKenOnF1Vx754hguLapZfp23TdnRa7k86VAJPGUawBRwWixVvyv7m_b_RKeYQ68DiQ7B0RCq_LHRQAivWfb1Pg");'>
+                </div>
+                <div>
+                  <p class="text-base sm:text-lg font-bold text-white">EcoPower</p>
+                  <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Renewable Energy</p>
+                </div>
+                <button
+                  class="w-full bg-[var(--primary-color)] text-black font-bold py-2 px-4 rounded-full opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity text-sm sm:text-base">Invest
+                  Now</button>
+              </div>
+
+              <div
+                class="group flex flex-col gap-3 sm:gap-4 rounded-2xl bg-[var(--card-bg)] p-4 transition-all duration-300 hover:bg-[var(--secondary-color)] hover:scale-[1.02] sm:hover:scale-105">
+                <div class="w-full aspect-square rounded-xl bg-cover bg-center"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUbtLt2XdA-r6motxEePRHGxwMLDs1ug8TNBeAVDoMz0t54XTC9whqCq8coJ8QktQz-MvBbJnO2xfDG55BwvTcHwJXwPC5Fih2Jta7z0X93FSRrp8mtyUdC9PLhgc0Kb4P7sfSedOIYMOfJrg7AOegJd6vCXRlnpjlKHwtzcM84N_rBvvBCtCz_cSfW8t37MYxFYWlDqqwdukir8OxJO859H2CLoTe-ssZ6SQK8uKB5mtx3xwnRy_OBNPQgB8Axpb_SKOSbP5I4KA");'>
+                </div>
+                <div>
+                  <p class="text-base sm:text-lg font-bold text-white">Retail Giant</p>
+                  <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Consumer Goods</p>
+                </div>
+                <button
+                  class="w-full bg-[var(--primary-color)] text-black font-bold py-2 px-4 rounded-full opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity text-sm sm:text-base">Invest
+                  Now</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Trending Mutual Funds -->
+          <section class="mb-10 sm:mb-12">
+            <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">Trending Mutual Funds</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+              <div class="flex flex-col gap-4 rounded-2xl bg-[var(--card-bg)] p-4 sm:p-6">
+                <div class="flex items-center gap-3 sm:gap-4">
+                  <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-cover bg-center"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2ewrTBJcxD2EudbLkfOlsQffGZy-IPDyWqo0eYK_EBGYQfMT-xIdCc3xlDT2buJiQ8WtolfKfO0zOJrL8JPRZPqecP3dLAm4ekTtN47D8WQHdq1eaHVUICL6ZQn-Q5GCPj9OyLG031VmYsV8BR-yp_OolTCvE-XwIpRiRS5yCyuqo45MBxioDJUKenOnF1Vx754hguLapZfp23TdnRa7k86VAJPGUawBRwWixVvyv7m_b_RKeYQ68DiQ7B0RCq_LHRQAivWfb1Pg");'>
+                  </div>
+                  <div>
+                    <p class="text-lg sm:text-xl font-bold text-white">Growth Fund A</p>
+                    <p class="text-sm sm:text-base text-[var(--text-secondary)]">High Growth</p>
+                  </div>
+                </div>
+                <div class="flex items-end justify-between gap-3">
+                  <div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)]">1Y Return</p>
+                    <p class="text-xl sm:text-2xl font-bold text-green-400">+25.8%</p>
+                  </div>
+                  <button
+                    class="bg-transparent border border-[var(--primary-color)] text-[var(--primary-color)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary-color)] hover:text-black transition-colors duration-300 ease-in-out text-sm sm:text-base">View
+                    Details</button>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-4 rounded-2xl bg-[var(--card-bg)] p-4 sm:p-6">
+                <div class="flex items-center gap-3 sm:gap-4">
+                  <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-cover bg-center"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUbtLt2XdA-r6motxEePRHGxwMLDs1ug8TNBeAVDoMz0t54XTC9whqCq8coJ8QktQz-MvBbJnO2xfDG55BwvTcHwJXwPC5Fih2Jta7z0X93FSRrp8mtyUdC9PLhgc0Kb4P7sfSedOIYMOfJrg7AOegJd6vCXRlnpjlKHwtzcM84N_rBvvBCtCz_cSfW8t37MYxFYWlDqqwdukir8OxJO859H2CLoTe-ssZ6SQK8uKB5mtx3xwnRy_OBNPQgB8Axpb_SKOSbP5I4KA");'>
+                  </div>
+                  <div>
+                    <p class="text-lg sm:text-xl font-bold text-white">Income Fund B</p>
+                    <p class="text-sm sm:text-base text-[var(--text-secondary)]">Stable Income</p>
+                  </div>
+                </div>
+                <div class="flex items-end justify-between gap-3">
+                  <div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)]">1Y Return</p>
+                    <p class="text-xl sm:text-2xl font-bold text-green-400">+12.3%</p>
+                  </div>
+                  <button
+                    class="bg-transparent border border-[var(--primary-color)] text-[var(--primary-color)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary-color)] hover:text-black transition-colors duration-300 ease-in-out text-sm sm:text-base">View
+                    Details</button>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-4 rounded-2xl bg-[var(--card-bg)] p-4 sm:p-6">
+                <div class="flex items-center gap-3 sm:gap-4">
+                  <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-cover bg-center"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5QflLLRfeVAvf41Wus_L-Pun0pLWcLC8wsC1B2VkU4LB5eRfE4GkaywbfPfx0DN58rhpJET3iN38QDc4jN5LvNFYgz6z6c9d6C0yuU711i0Q69OHhoNueng9_4ewIvn5WQQv3KRgezrdn2UUHxsaZSIMm2q8SX1yAwZ8JEeljI1UYwmRa-TuqtG0jTNihy3NSrgZ72hFzDhGtsrb9Y4zrgdq4qS4H1rmIgWizxKN6qaktGs8DEigJrW0W0tznsggzg7ud0SUGf34");'>
+                  </div>
+                  <div>
+                    <p class="text-lg sm:text-xl font-bold text-white">Balanced Fund C</p>
+                    <p class="text-sm sm:text-base text-[var(--text-secondary)]">Balanced Portfolio</p>
+                  </div>
+                </div>
+                <div class="flex items-end justify-between gap-3">
+                  <div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)]">1Y Return</p>
+                    <p class="text-xl sm:text-2xl font-bold text-green-400">+18.5%</p>
+                  </div>
+                  <button
+                    class="bg-transparent border border-[var(--primary-color)] text-[var(--primary-color)] px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--primary-color)] hover:text-black transition-colors duration-300 ease-in-out text-sm sm:text-base">View
+                    Details</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Market Summary -->
+          <section>
+            <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">Market Summary</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              <div class="rounded-2xl bg-[var(--card-bg)] p-4 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <div>
+                    <p class="text-lg sm:text-xl font-bold text-white">Market Index X</p>
+                    <p class="text-sm sm:text-base text-[var(--text-secondary)]">S&amp;P 500</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-2xl sm:text-3xl font-bold text-green-400">+5.2%</p>
+                    <p class="text-xs sm:text-base font-medium text-green-400">+12% Past Year</p>
+                  </div>
+                </div>
+                <div class="h-48 sm:h-60">
+                  <svg width="100%" height="100%" viewBox="0 0 472 150" preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <path
+                      d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25"
+                      stroke="#38e07b" stroke-width="3" stroke-linecap="round"></path>
+                    <path
+                      d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z"
+                      fill="url(#paint0_linear_chart)"></path>
+                    <defs>
+                      <linearGradient id="paint0_linear_chart" x1="236" y1="1" x2="236" y2="149"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#38e07b" stop-opacity="0.3"></stop>
+                        <stop offset="1" stop-color="#38e07b" stop-opacity="0"></stop>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-[var(--card-bg)] p-4 sm:p-6">
+                <div class="flex justify-between items-start mb-3 sm:mb-4">
+                  <div>
+                    <p class="text-lg sm:text-xl font-bold text-white">Sector Performance</p>
+                    <p class="text-sm sm:text-base text-[var(--text-secondary)]">Past Month</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-2xl sm:text-3xl font-bold text-red-400">-1.3%</p>
+                    <p class="text-xs sm:text-base font-medium text-red-400">-3% Overall</p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-5 gap-3 sm:gap-4 items-end h-48 sm:h-60 pt-2 sm:pt-4">
+                  <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                    <div class="w-full bg-[var(--secondary-color)] rounded-t-lg" style="height: 80%;">
+                      <div class="bg-green-400 h-full w-full rounded-t-lg" style="height: 75%;"></div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Tech</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                    <div class="w-full bg-[var(--secondary-color)] rounded-t-lg" style="height: 60%;">
+                      <div class="bg-green-400 h-full w-full rounded-t-lg" style="height: 85%;"></div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Health</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                    <div class="w-full bg-[var(--secondary-color)] rounded-t-lg" style="height: 40%;">
+                      <div class="bg-red-400 h-full w-full rounded-t-lg" style="height: 50%;"></div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Finance</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                    <div class="w-full bg-[var(--secondary-color)] rounded-t-lg" style="height: 70%;">
+                      <div class="bg-green-400 h-full w-full rounded-t-lg" style="height: 90%;"></div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Energy</p>
+                  </div>
+                  <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                    <div class="w-full bg-[var(--secondary-color)] rounded-t-lg" style="height: 30%;">
+                      <div class="bg-red-400 h-full w-full rounded-t-lg" style="height: 25%;"></div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)]">Retail</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CTA -->
+          <div class="flex justify-center mt-10 sm:mt-12">
+            <button
+              class="bg-[var(--primary-color)] text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:bg-[var(--accent-color)] transition-colors duration-300 ease-in-out w-full sm:w-auto">
+              Continue Investing
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>
